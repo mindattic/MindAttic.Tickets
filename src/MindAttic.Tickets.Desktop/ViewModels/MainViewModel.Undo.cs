@@ -1,13 +1,21 @@
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using MindAttic.Tickets.Data;
 
 namespace MindAttic.Tickets.Desktop.ViewModels;
 
+/// <summary>The one undo toast shown now (M.TIX-T177), for the undo lane's own <c>MaToastHost</c>: "{Title}." until
+/// it's undone, dismissed, or times out. Always bodiless (a single line).</summary>
+public sealed record UndoToastEntry(string Title)
+{
+    public string Body => "";
+}
+
 /// <summary>
 /// Undo (M.TIX-T80): approve, unapprove, reject, a queue move, close / won't do, a board move, and adding or removing a link
-/// can be taken back with Ctrl+Z or the toast's Undo button, newest first. An undo writes compensating changes, each recorded
-/// in the ticket's history with an <c>undo</c> event saying what was undone; nothing is deleted, and nothing that someone else
-/// has changed again since is overwritten (<see cref="TicketsDb.Undo"/> refuses it).
+/// can be taken back with Ctrl+Z or by clicking the undo toast, newest first (M.TIX-T177: its own <c>MaToastHost</c> lane).
+/// An undo writes compensating changes, each recorded in the ticket's history with an <c>undo</c> event saying what was
+/// undone; nothing is deleted, and nothing that someone else has changed again since is overwritten (<see cref="TicketsDb.Undo"/> refuses it).
 /// </summary>
 public sealed partial class MainViewModel
 {
@@ -29,6 +37,9 @@ public sealed partial class MainViewModel
     /// <summary>What Ctrl+Z would undo now, in words, or empty.</summary>
     public string NextUndo => undo.Count > 0 ? undo[^1].Done : "";
 
+    /// <summary>The undo lane's <c>MaToastHost</c> items (M.TIX-T177): at most one, mirroring <see cref="UndoToast"/>.</summary>
+    public ObservableCollection<UndoToastEntry> UndoToasts { get; } = [];
+
     /// <summary>The toast's text after a change ("M.TIX-T5 approved."), empty when it's hidden.</summary>
     public string UndoToast
     {
@@ -37,6 +48,8 @@ public sealed partial class MainViewModel
         {
             if (!Set(ref undoToast, value)) return;
             Raise(nameof(IsUndoToastShown));
+            UndoToasts.Clear();
+            if (value.Length > 0) UndoToasts.Add(new UndoToastEntry(value));
             CommandManager.InvalidateRequerySuggested();
         }
     }

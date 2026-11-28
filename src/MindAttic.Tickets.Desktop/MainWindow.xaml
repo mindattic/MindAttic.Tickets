@@ -1659,20 +1659,12 @@
                 </ScrollViewer>
             </Border>
 
-            <!-- Undo toast (M.TIX-T80): after an undoable change, for a few seconds; Ctrl+Z undoes it whether or not it shows. -->
-            <Border Grid.ColumnSpan="2" Style="{StaticResource MaCard}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,16"
-                    Background="{DynamicResource MaPane}" BorderBrush="{DynamicResource MaControlBorder}" Panel.ZIndex="10"
-                    Visibility="{Binding IsUndoToastShown, Converter={StaticResource Visible}}"
-                    AutomationProperties.Name="Undo">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding UndoToast}" VerticalAlignment="Center" Margin="0,0,16,0" MaxWidth="560" TextTrimming="CharacterEllipsis"
-                               ToolTip="{Binding UndoToast}" />
-                    <Button Style="{StaticResource MaPrimaryButton}" Content="_Undo" Command="{Binding UndoCommand}"
-                            ToolTip="Undo it (Ctrl+Z): writes a compensating change; the history keeps both." />
-                    <Button Style="{StaticResource MaToolButton}" Content="✕" Margin="8,0,0,0" Command="{Binding DismissUndoToastCommand}"
-                            AutomationProperties.Name="Dismiss" ToolTip="Dismiss (Ctrl+Z still undoes it)" />
-                </StackPanel>
-            </Border>
+            <!-- Undo toast (M.TIX-T80): its own MaToastHost lane (M.TIX-T177), after an undoable change, for a few
+                 seconds; clicking it undoes, ✕ just hides it, and Ctrl+Z undoes it whether or not it shows. -->
+            <mc:MaToastHost Grid.ColumnSpan="2" ItemsSource="{Binding UndoToasts}" Panel.ZIndex="10"
+                             HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,16" Width="360"
+                             OpenCommand="{Binding UndoCommand}" DismissCommand="{Binding DismissUndoToastCommand}"
+                             AutomationProperties.Name="Undo" />
         </Grid>
 
         <!-- Footer: status, last refresh, zoom, database. The hidden announcer speaks changes (4.1.3). -->
